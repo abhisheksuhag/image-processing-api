@@ -1,6 +1,8 @@
 const express = require("express");
 const sharp = require("sharp");
 const fs = require("fs");
+const v4= require("v4");
+const multer = require("multer");
 const app = express();
 
 app.use(express.json());
@@ -58,7 +60,25 @@ app.use("/public/:filename", async (req, res, next) => {
     }
 })
 
+app.get("/all-images", async(req, res, next)=>{
+    const files= fs.readdirSync("./public")
+    .map((file)=>({url : `http://localhost:5000/public/${file}`}));
+    const response = files.length > 0 ? files : {
+        message : "No images are found in your public directory, Navigate to /upload to upload images of your choice",
+        url:"http://localhost:5000/upload",
+    }
+    res.json(response);
+});
 
+
+
+app.post("/upload", (req, res, next)=>{
+    console.log(req.files);
+    res.json({
+        url:`http://localhost:5000/public/${req.file.filename}`,
+        message:"file uploaded successfully",
+    })
+})
 
 const port = 5000;
 app.listen(port, () => {
