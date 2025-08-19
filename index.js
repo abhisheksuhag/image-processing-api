@@ -70,9 +70,17 @@ app.get("/all-images", async(req, res, next)=>{
     res.json(response);
 });
 
+const uploadMiddlware = multer({
+    limits: 1000000,
+    storage: multer.diskStorage({
+        destination: "./public",
+        filename: function(req,res, cb){
+        cb(null, v4() + path.extname(file.originalname));
+        },
+    }),
+}).single("File");
 
-
-app.post("/upload", (req, res, next)=>{
+app.post("/upload", uploadMiddlware, (req, res, next)=>{
     console.log(req.files);
     res.json({
         url:`http://localhost:5000/public/${req.file.filename}`,
