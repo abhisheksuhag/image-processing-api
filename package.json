@@ -1,0 +1,25 @@
+{
+  "name": "image-processing-api",
+  "version": "1.0.0",
+  "description": "Resize &amp; compress image from URL. You can use this API to create different sizes of images.",
+  "homepage": "https://github.com/abhisheksuhag/image-processing-api#readme",
+  "bugs": {
+    "url": "https://github.com/abhisheksuhag/image-processing-api/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abhisheksuhag/image-processing-api.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "fs": "^0.0.1-security",
+    "sharp": "^0.34.3"
+  }
+}
