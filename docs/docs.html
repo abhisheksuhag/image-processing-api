@@ -6,59 +6,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Docs</title>
 </head>
-<body>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        main {
-            padding: 1rem;
-        }
-        div {
-            margin: 1rem;
-        }
-
-    .eg{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    main {
+      padding: 1rem;
+    }
+    div {
+      margin: 1rem;
+    }
+    .eg {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
     }
 
-    img  {
-        width: 100%;
+    img {
+      width: 100%;
     }
-    </style>
-</body>
-<main>
-    <h1>All Routes</h1>
-    <div>
-        <a href="/all-images">GET /all-images</a> Get list of all images.
-    </div>
-    <div><a href="/upload">Get /upload</a>Upload image UI.</div>
-    <div>
-        <a href="/public/filename">GET /public/{filename.png}</a>Get single image. all image
+  </style>
+  <body>
+    <main>
+      <h1>All routes</h1>
+      <div>
+        <a href="/all-images">GET /all-images</a> Get list of all image.
+      </div>
+      <div><a href="/upload">GET /upload</a> Upload image UI.</div>
+      <div>
+        <a href="/upload">POST /upload</a> Upload image. requires FormData with
+        option "file".
+      </div>
+      <div>
+        <a href="/public/filename">GET /public/{filename.png}</a> Get Single
+        image. all image.
         <h3>Query Parameter</h3>
         <code>
-            ?q={quality <=100 (Default: 60)}<br />
-            ?s={image size}<br/>
-            ?w={width} <br />
-            ?h={height} <br/>
-            ?fit={contain, cover, fill, outside, inside}<br/>
-            ?bg={Background color for cropped area} <br/>
-
+          ?q={quality <=100 (Default: 60)} <br />
+          ?s={image size} <br />
+          ?w={width} <br />
+          ?h={height} <br />
+          ?fit={contain, cover, fill, outside, inside} <br />
+          ?bg={Background color for cropped area} <br />
         </code>
-    </div>
-    <div class="eg">
+      </div>
+
+      <div class="eg">
         <div>
-            <img
-            src="https://github.com/hicodersofficial/image_processing_api/raw/master/docs/original-img.jpg"
+          <img
+            src="https://github.com/abhisheksuhag/image_processing_api/raw/master/docs/original-img.jpg"
             width="50%"
-          />Original (1.5 MB)
+          />
+          Original (1.5 MB)
         </div>
         <div>
           <img
-            src="https://github.com/hicodersofficial/image_processing_api/raw/master/docs/original-img-com.jpg"
+            src="https://github.com/abhisheksuhag/image_processing_api/raw/master/docs/original-img-com.jpg"
             width="50%"
           />
           Compressed(75 KB)
@@ -68,16 +71,17 @@
       <div class="eg">
         <div>
           <img
-            src="https://github.com/hicodersofficial/image_processing_api/raw/master/docs/original-img2.jpg"
+            src="https://github.com/abhisheksuhag/image_processing_api/raw/master/docs/original-img2.jpg"
           />
           Original (3 MB)
         </div>
         <div>
           <img
-            src="https://github.com/hicodersofficial/image_processing_api/raw/master/docs/original-img1-com.jpg"
+            src="https://github.com/abhisheksuhag/image_processing_api/raw/master/docs/original-img1-com.jpg"
           />
           Compressed(12 KB)
         </div>
-    </div>
-</main>
+      </div>
+    </main>
+  </body>
 </html>

@@ -1,7 +1,7 @@
 const express = require("express");
 const sharp = require("sharp");
 const fs = require("fs");
-const v4= require("v4");
+const v4 = require("uuid");
 const multer = require("multer");
 const app = express();
 
@@ -18,24 +18,18 @@ app.use("/public/:filename", async (req, res, next) => {
                 return res.status(400).json({ message: "height should be less than <10000" });
             }
         }
-
-
         if (w) {
             w = parseInt(w);
             if (w > 10000) {
                 return res.status(400).json({ message: "width should be less than <10000" });
             }
         }
-
-
         if (s) {
             s = parseInt(s);
             if (s > 10000) {
                 return res.status(400).json({ message: "size should be less than <10000" });
             }
         }
-
-
         if (q) {
             q = parseInt(q);
             if (q > 10000) {
@@ -86,6 +80,14 @@ app.post("/upload", uploadMiddlware, (req, res, next)=>{
         url:`http://localhost:5000/public/${req.file.filename}`,
         message:"file uploaded successfully",
     })
+})
+
+app.get("/upload", uploadMiddlware, (req, res, next)=>{
+    res.sendFile(path.join(__dirname, "index.html"));
+});
+
+app.get("/", async(req, res, next)=>{
+    res.sendFile(path.join(__dirname, "./docs/docs.html"));
 })
 
 const port = 5000;
